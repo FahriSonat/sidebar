@@ -1,6 +1,7 @@
 import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
+import { App } from '../App'
 
 import appCss from '../styles.css?url'
 
@@ -15,7 +16,7 @@ export const Route = createRootRoute({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'TanStack Start Starter',
+        title: 'Sidebar App',
       },
     ],
     links: [
@@ -26,7 +27,11 @@ export const Route = createRootRoute({
     ],
   }),
 
-  shellComponent: RootDocument,
+  shellComponent: ({ children }) => ( 
+    <RootDocument>
+      <App>{children}</App>
+        </RootDocument>
+    ),
 })
 
 function RootDocument({ children }: { children: React.ReactNode }) {
