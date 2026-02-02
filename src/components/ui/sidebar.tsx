@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { Slot } from "@radix-ui/react-slot"
 import { cn } from "@/lib/utils"
 
 function Sidebar({
@@ -91,11 +92,13 @@ function SidebarMenuItem({ className, ...props }: React.ComponentProps<"li">) {
 }
 
 function SidebarMenuButton({
+  asChild,
   className,
   ...props
-}: React.ComponentProps<"button">) {
+}: React.ComponentProps<"button"> & { asChild?: boolean }) {
+  const Comp = asChild ? Slot : "button"
   return (
-    <button
+    <Comp
       data-slot="sidebar-menu-button"
       className={cn(
         "hover:bg-sidebar-accent hover:text-sidebar-accent-foreground gap-2 rounded-md p-2 text-left text-sm transition-colors flex w-full items-center",
