@@ -1,19 +1,17 @@
-import { SidebarProvider, SidebarTrigger } from "./components/ui/sidebar";
 import { AppSidebar } from "./components/app-sidebar";
 
 
 export function App({ children }: { children: React.ReactNode }) {
-    const getDefaultOpen = (): boolean => { 
-        if (typeof window === "undefined") return false;
-        return localStorage.getItem("sidebar-open") === "true"}
     return (
-        <SidebarProvider
-            defaultOpen={getDefaultOpen()}>
-                <AppSidebar />
-                <main className="p-4">
-                    <SidebarTrigger />
-                    {children}
-                </main>
-            </SidebarProvider>
+      <div className="flex h-screen w-screen bg-background text-foreground">
+
+        <AppSidebar />
+                    <main className="p-4">
+                        <div className="flex justify-between items-center mb-4">
+                        </div>
+                        {children}
+                    </main>
+      </div>           
+        
     );
 }

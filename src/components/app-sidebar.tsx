@@ -4,15 +4,16 @@ import {
     Images,
     Inbox,
     Settings,
+   // Profil
 } from "lucide-react";
 
 import { 
-    Sidebar, 
+    Sidebar,
     SidebarContent,
     SidebarGroup,
-    SidebarGroupContent,
-    SidebarGroupLabel, 
-    SidebarHeader,
+    SidebarHeader, 
+    // SidebarGroupContent,
+    // SidebarGroupLabel, 
     SidebarMenu,
     SidebarMenuButton,
     SidebarMenuItem,
@@ -40,6 +41,7 @@ import {
     { title: "Settings", 
         url:"settings",
         icon: Settings, 
+
     },
 
  ]
@@ -47,26 +49,30 @@ import {
 export function AppSidebar() {
     return (
         <Sidebar>
-            <SidebarHeader />
-            <SidebarContent>
-                <SidebarGroup>
-                    <SidebarGroupLabel>Application</SidebarGroupLabel>
-                    <SidebarGroupContent>
-                        <SidebarMenu>
-                            {items.map((item) => ( 
-                                <SidebarMenuItem key={item.title} >
+            <SidebarHeader>
+                <div className="text-lg font-bold p-4">Application</div>
+            </SidebarHeader>
+
+                <SidebarContent>
+                    <SidebarGroup>
+                        <SidebarMenu> 
+                            <SidebarMenuItem>
+                                <SidebarMenuButton>Ana Sayfa</SidebarMenuButton>
+                            </SidebarMenuItem>    
+                            {items.map((item) => (
+                                <SidebarMenuItem key={item.title}>
                                     <SidebarMenuButton asChild>
-                                        <a href={item.url} className="flex items-center gap-2 w-full">
-                                            <item.icon className="w-4 h-4" />
-                                            <span>{item.title}</span>
+                                        <a href={item.url}>
+                                        <item.icon size={16} />
+
+                                        <span>{item.title}</span>
                                         </a>
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
-                            ))}
-                        </SidebarMenu>
-                    </SidebarGroupContent>
-                </SidebarGroup>
-            </SidebarContent>
+                            ))} 
+                         </SidebarMenu>
+                    </SidebarGroup>
+                </SidebarContent>                 
         </Sidebar>
     );
 };
